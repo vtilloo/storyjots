@@ -1,0 +1,154 @@
+.my-reviews-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.my-reviews-container h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.book-cover {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.book-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.book-details h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #333;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    white-space: normal;
+    overflow: visible;
+}
+
+.author {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.review-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rating {
+    color: #ffd700;
+    font-size: 20px;
+}
+
+.review-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.view-review-link,
+.edit-review-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.view-review-link {
+    background-color: #90d5ff;
+    color: black;
+}
+
+.edit-review-link {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.view-review-link:hover {
+    background-color: #70b8ff;
+}
+
+.edit-review-link:hover {
+    background-color: #e0e0e0;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.browse-books-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #90d5ff;
+    color: black;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.browse-books-link:hover {
+    background-color: #70b8ff;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .my-reviews-container {
+        padding: 0 15px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-cover {
+        width: 80px;
+        height: 120px;
+    }
+} 

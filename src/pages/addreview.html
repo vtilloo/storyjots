@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Review - Story Glimpse</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .add-book-form, .add-review-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #90d5ff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #70b8ff;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 10px 30px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #90d5ff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Updated File Input Styles */
+        .form-group input[type="file"] {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        /* Star Rating */
+        .star-rating {
+            display: inline-flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            font-size: 25px;
+            color: #ddd;
+            padding: 0 2px;
+        }
+
+        .star-rating input:checked ~ label {
+            color: #ffd700;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffd700;
+        }
+
+        /* Image Preview */
+        .image-preview {
+            margin-top: 10px;
+            max-width: 200px;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .intro {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <nav class="nav-left">
+                <a href="website.html" class="nav-link">Home</a>
+                <a href="#books" class="nav-link">Books for you</a>
+                <a href="my reviews.html" class="nav-link">My Reviews</a>
+                <a href="addareview.html" class="nav-link">Add a Review</a>
+            </nav>
+            <div class="logo">
+                <h1 style="color: black; background-color: #90d5ff; padding: 10px; border-radius: 10px;">Story Glimpse</h1>
+            </div>
+            <div class="nav-right">
+                <a href="login.html" class="login-button">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Add a Review and Add a Book</h2>
+        </section>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <button class="submit-button" id="addReviewButton">Add a Review</button>
+            <button class="submit-button" id="addBookButton">Add a Book</button>
+        </div>
+
+        <!-- Review Form -->
+        <section class="add-review-form" id="addReviewForm">
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="review-title">Book Title:</label>
+                    <input type="text" id="review-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age-rating">Age Rating:</label>
+                    <input type="text" id="age-rating" placeholder="e.g., 8-12 Years" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="review-description">Review:</label>
+                    <textarea id="review-description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5">★</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">★</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">★</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">★</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="book-cover">Book Cover Image:</label>
+                    <input type="file" 
+                           id="book-cover" 
+                           accept="image/png, image/jpeg, image/jpg"
+                           style="display: block; width: 100%;"
+                           required>
+                    <div class="image-preview" id="coverPreview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="review-image">Review Image:</label>
+                    <input type="file" 
+                           id="review-image" 
+                           accept="image/png, image/jpeg, image/jpg"
+                           style="display: block; width: 100%;"
+                           required>
+                    <div class="image-preview" id="reviewPreview"></div>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Review</button>
+                <div class="success-message" id="successMessage">
+                    Review submitted successfully! Redirecting to My Reviews...
+                </div>
+            </form>
+        </section>
+
+        <!-- Book Form -->
+        <section class="add-book-form" id="addBookForm">
+            <form id="bookForm">
+                <div class="form-group">
+                    <label for="book-title">Title:</label>
+                    <input type="text" id="book-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="book-description">Description:</label>
+                    <textarea id="book-description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="book-image">Book Image:</label>
+                    <input type="file" 
+                           id="book-image" 
+                           accept="image/png, image/jpeg, image/jpg"
+                           style="display: block; width: 100%;"
+                           required>
+                    <div class="image-preview" id="bookPreview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <div class="star-rating">
+                        <input type="radio" id="book-star5" name="book-rating" value="5" required>
+                        <label for="book-star5">★</label>
+                        <input type="radio" id="book-star4" name="book-rating" value="4">
+                        <label for="book-star4">★</label>
+                        <input type="radio" id="book-star3" name="book-rating" value="3">
+                        <label for="book-star3">★</label>
+                        <input type="radio" id="book-star2" name="book-rating" value="2">
+                        <label for="book-star2">★</label>
+                        <input type="radio" id="book-star1" name="book-rating" value="1">
+                        <label for="book-star1">★</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Book</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Toggle Forms
+        document.getElementById('addReviewButton').addEventListener('click', function() {
+            document.getElementById('addReviewForm').style.display = 'block';
+            document.getElementById('addBookForm').style.display = 'none';
+        });
+
+        document.getElementById('addBookButton').addEventListener('click', function() {
+            document.getElementById('addBookForm').style.display = 'block';
+            document.getElementById('addReviewForm').style.display = 'none';
+        });
+
+        // Handle file uploads and previews
+        function handleFileUpload(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.style.display = 'block';
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        handleFileUpload('book-cover', 'coverPreview');
+        handleFileUpload('review-image', 'reviewPreview');
+        handleFileUpload('book-image', 'bookPreview');
+
+        // Handle review form submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const reviewData = {
+                title: document.getElementById('review-title').value,
+                author: document.getElementById('author').value,
+                ageRating: document.getElementById('age-rating').value,
+                description: document.getElementById('review-description').value,
+                rating: document.querySelector('input[name="rating"]:checked').value,
+                bookCover: document.getElementById('coverPreview').querySelector('img').src,
+                reviewImage: document.getElementById('reviewPreview').querySelector('img').src,
+                date: new Date().toISOString()
+            };
+
+            // Get existing reviews or initialize empty array
+            let reviews = JSON.parse(localStorage.getItem('bookReviews') || '[]');
+            
+            // Add new review
+            reviews.push(reviewData);
+            
+            // Save to localStorage
+            localStorage.setItem('bookReviews', JSON.stringify(reviews));
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Redirect to reviews page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'my reviews.html';
+            }, 2000);
+        });
+
+        // Handle book form submission
+        document.getElementById('bookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const bookData = {
+                title: document.getElementById('book-title').value,
+                description: document.getElementById('book-description').value,
+                rating: document.querySelector('input[name="book-rating"]:checked').value,
+                image: document.getElementById('bookPreview').querySelector('img').src,
+                date: new Date().toISOString()
+            };
+
+            // Get existing books or initialize empty array
+            let books = JSON.parse(localStorage.getItem('books') || '[]');
+            
+            // Add new book
+            books.push(bookData);
+            
+            // Save to localStorage
+            localStorage.setItem('books', JSON.stringify(books));
+
+            alert('Book added successfully!');
+            window.location.href = '#books';
+        });
+    </script>
+</body>
+</html>

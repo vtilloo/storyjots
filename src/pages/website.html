@@ -1,0 +1,117 @@
+
+### Complete Example of website.html with a Functional Search Bar
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styles for the search bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar {
+            width: 300px; /* Width of the search bar */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the book list */
+        .book-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .book-item {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Your Book Store</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for books..." id="searchInput">
+        <button class="search-button" onclick="performSearch()">Search</button>
+    </div>
+
+    <main>
+        <div class="book-list" id="bookList">
+            <div class="book-item">Eddie Red Undercover</div>
+            <div class="book-item">The Battle</div>
+            <div class="book-item">Lucky</div>
+            <div class="book-item">Not If I Can Help It</div>
+            <div class="book-item">Dust and Grim</div>
+            <div class="book-item">Fablehaven</div>
+        </div>
+    </main>
+
+    <script>
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const bookList = document.getElementById('bookList');
+            const books = bookList.getElementsByClassName('book-item');
+
+            // Clear previous results
+            bookList.innerHTML = '';
+
+            // Filter and display books
+            const allBooks = [
+                'Eddie Red Undercover',
+                'The Battle',
+                'Lucky',
+                'Not If I Can Help It',
+                'Dust and Grim',
+                'Fablehaven'
+            ];
+
+            const filteredBooks = allBooks.filter(book => book.toLowerCase().includes(query));
+
+            if (filteredBooks.length > 0) {
+                filteredBooks.forEach(book => {
+                    const bookItem = document.createElement('div');
+                    bookItem.className = 'book-item';
+                    bookItem.textContent = book;
+                    bookList.appendChild(bookItem);
+                });
+            } else {
+                const noResults = document.createElement('div');
+                noResults.className = 'book-item';
+                noResults.textContent = 'No results found.';
+                bookList.appendChild(noResults);
+            }
+        }
+    </script>
+
+</body>
+</html>

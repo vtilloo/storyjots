@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryGlimpse</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 10px 30px;
+            background-color: ;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0px;
+            border-radius: 10px;
+        }
+
+        .logo h1 {
+            color: black;
+            background-color: #90d5ff;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 32px;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #007acc;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #90d5ff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 16px;
+        }
+
+        .login-button:hover {
+            background-color: #007acc;
+            color: white;
+        }
+
+        /* Banner Styles */
+        .banner {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #6699CC;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Featured Books Section */
+        .suggested-books {
+            background-color: #fff;
+            padding: 40px 20px;
+            margin: 80px auto 20px auto;
+            width: 80%;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .suggested-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .book-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-item {
+            text-align: center;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+        }
+
+        .book-item img {
+            width: 150px;
+            height: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .book-details {
+            margin-top: 10px;
+        }
+
+        .book-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .book-author {
+            font-style: italic;
+            color: #555;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-arrow {
+            left: 0;
+        }
+
+        .right-arrow {
+            right: 0;
+        }
+
+        .scroll-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <nav class="nav-left">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#books" class="nav-link">Books for You</a>
+                <a href="my reviews.html" class="nav-link">My Reviews</a>
+                <a href="addareview.html" class="nav-link">Add a Review</a>
+            </nav>
+            <div class="logo">
+                <h1>Story Glimpse</h1>
+            </div>
+            <div class="nav-right">
+                <a href="login.html" class="login-button">Login</a>
+            </div>
+        </div>
+        <div class="banner">
+            <p>Discover your next great read with Story Glimpse!</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="suggested-books">
+            <h2 class="suggested-title">Featured Books</h2>
+            <button class="scroll-arrow left-arrow" onclick="scrollLeft()">&#9664;</button>
+            <div class="book-list" id="bookList">
+                <a href="lucky.html" class="book-item">
+                    <img src="lucky.jpg" alt="Lucky by Chris Hill"/>
+                    <div class="book-details">
+                        <span class="book-title">Lucky</span>
+                        <span class="book-author">by Chris Hill</span>
+                    </div>
+                </a>
+                <a href="battle.html" class="book-item">
+                    <img src="battle.jpg" alt="The Battle by Karuna Riazi"/>
+                    <div class="book-details">
+                        <span class="book-title">The Battle</span>
+                        <span class="book-author">by Karuna Riazi</span>
+                    </div>
+                </a>
+                <a href="fablehaven.html" class="book-item">
+                    <img src="fablehaven.png" alt="Fablehaven by Brandon Mull"/>
+                    <div class="book-details">
+                        <span class="book-title">Fablehaven</span>
+                        <span class="book-author">by Brandon Mull</span>
+                    </div>
+                </a>
+                <a href="undercover.html" class="book-item">
+                    <img src="undercover.jpg" alt="Eddie Red Undercover by Marcia Wells"/>
+                    <div class="book-details">
+                        <span class="book-title">Eddie Red Undercover</span>
+                        <span class="book-author">by Marcia Wells</span>
+                    </div>
+                </a>
+                <a href="not.html" class="book-item">
+                    <img src="not.jpg" alt="Not If I Can Help It by Carolyn Mackler"/>
+                    <div class="book-details">
+                        <span class="book-title">Not If I Can Help It</span>
+                        <span class="book-author">by Carolyn Mackler</span>
+                    </div>
+                </a>
+                <a href="dust.html" class="book-item">
+                    <img src="dust.jpg" alt="Dust and Grim by Chuck Wendig"/>
+                    <div class="book-details">
+                        <span class="book-title">Dust and Grim</span>
+                        <span class="book-author">by Chuck Wendig</span>
+                    </div>
+                </a>
+            </div>
+            <button class="scroll-arrow right-arrow" onclick="scrollRight()">&#9654;</button>
+        </section>
+    </main>
+
+    <script>
+        // Scroll functionality for book list
+        function scrollLeft() {
+            const bookList = document.getElementById('bookList');
+            bookList.scrollBy({ left: -200, behavior: 'smooth' });
+        }
+
+        function scrollRight() {
+            const bookList = document.getElementById('bookList');
+            bookList.scrollBy({ left: 200, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
+

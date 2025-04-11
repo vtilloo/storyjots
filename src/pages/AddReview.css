@@ -1,0 +1,151 @@
+/* Header styles (same as other pages) */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0px;
+    border-radius: 10px;
+}
+
+.logo h1 {
+    color: black;
+    background-color: #90d5ff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 32px;
+    margin: 0;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    margin: 0 15px;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #007acc;
+}
+
+.user-name {
+    margin-right: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Review Form Styles */
+.add-review-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.file-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.image-preview {
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.submit-button {
+    padding: 12px 24px;
+    background-color: #90d5ff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: #70b8ff;
+}
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.success-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 40px;
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.filled {
+    color: #ffd700;
+}
+
+/* Make stars slightly smaller on mobile */
+@media (max-width: 480px) {
+    .star {
+        font-size: 32px;
+    }
+} 

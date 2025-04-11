@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddie Red Undercover - StoryGlimpse</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Same header styles as main page */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 10px 30px;
+            background-color: ;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0px;
+            border-radius: 10px;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007acc;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #90d5ff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .login-button:hover {
+            background-color: #007acc;
+            color: white;
+        }
+
+        /* Main Content Styling */
+        main {
+            text-align: left;
+            padding: 40px 20px;
+            margin-top: 80px;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .book-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .book-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        .book-reviews-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #90d5ff;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .book-reviews-button:hover {
+            background-color: #007acc;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .book-details {
+            flex: 1;
+            margin-right: 20px;
+            max-width: 45%;
+        }
+
+        .book-details h3 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+        }
+
+        .book-details h4 {
+            font-size: 22px;
+            color: #ff9f00;
+            margin-bottom: 15px;
+        }
+
+        .book-details h5 {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .right-square {
+            background-color: #;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .book-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .book-image:hover {
+            transform: scale(1.05);
+        }
+
+        .review-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .review-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Related Books Section */
+        .related-books {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-books h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .book-list {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+        }
+
+        .book-item {
+            text-align: center;
+            width: 150px;
+        }
+
+        .book-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .book-item .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .book-item .book-author {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .book-details {
+                margin-right: 0;
+                max-width: 100%;
+            }
+
+            .review-image {
+                max-width: 90%;
+            }
+
+            .book-image {
+                max-width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .book-image-container {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            h3, h4, h5 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section: Same as on the main website -->
+    <header>
+        <div class="header-content">
+            <nav class="nav-left">
+                <a href="website.html" class="nav-link">Home</a>
+                <a href="#books" class="nav-link">Books for you</a>
+                <a href="my reviews.html" class="nav-link">My Reviews</a>
+                <a href="addareview.html" class="nav-link">Add a Review</a>
+            </nav>
+
+            <div class="logo"> 
+                <h1 style="color: black; background-color: #90d5ff; padding: 10px; border-radius: 10px;">Story Glimpse</h1>
+            </div>
+
+            <div class="nav-right">
+                <a href="login.html" class="login-button">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content for Eddie Red Undercover Review -->
+    <main>
+        <h2>Eddie Red Undercover Book Review</h2>
+
+        <!-- Flex container for book image and text with the review image -->
+        <div class="book-content">
+            <!-- Book image and button container -->
+            <div class="book-image-container">
+                <img src="undercover.jpg" alt="Eddie Red Undercover book cover" class="book-image" />
+                <a href="#more-undercover-reviews" class="book-reviews-button">More Reviews About This Book</a>
+            </div>
+
+            <!-- Book details and review image -->
+            <div class="book-details">
+                <h3>Eddie Red Undercover by Marcia Wells</h3>
+                <h4>★★★★</h4>
+                <h5>Age Rating: 8-12 Years</h5>
+                <div class="right-square">
+                    <p>Meet Eddie Red, a sixth-grader with a photographic memory and incredible drawing skills. 
+                    When the NYPD discovers his talents, they recruit him as their secret weapon to help catch 
+                    art thieves. Working undercover with his best friend and a detective, Eddie must use his 
+                    unique abilities to solve the case before the criminals strike again.</p>
+                </div>
+            </div>
+
+            <!-- Review image placed right next to the text -->
+            <img src="undercover review.jpg" alt="Eddie Red Undercover review image" class="review-image" />
+        </div>
+
+        <div class="related-books">
+            <h3>Other Books You Might Like</h3>
+            <div class="book-list">
+                <div class="book-item">
+                    <img src="battle.jpg" alt="The Battle">
+                    <div class="book-title">The Battle</div>
+                    <div class="book-author">by Karuna Riazi</div>
+                </div>
+                <div class="book-item">
+                    <img src="lucky.jpg" alt="Lucky">
+                    <div class="book-title">Lucky</div>
+                    <div class="book-author">by Chris Hill</div>
+                </div>
+                <div class="book-item">
+                    <img src="not.jpg" alt="Not If I Can Help It">
+                    <div class="book-title">Not If I Can Help It</div>
+                    <div class="book-author">by Carolyn Mackler</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
